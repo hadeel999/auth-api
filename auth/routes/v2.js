@@ -7,7 +7,7 @@ const Collection=require("../models/data-collection");
 const {users}=require("../models/index");
 
 const usersCol=new Collection(users);
-
+ 
 
 routers.get('/users', bearer,acl('read'),async (req, res) => {
     let allData = await usersCol.readRecord();

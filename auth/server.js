@@ -10,19 +10,20 @@ const errorHandler = require("./error-handlers/500");
 const signinRouters=require("./routes/signin");
 const signupRouters=require("./routes/signup");
 const secretStuffRouters=require("./routes/secretstuff");
-const getUsersRouters=require("./routes/getUsers");
 
 const v1Router=require("./routes/v1");
 const v2Router=require("./routes/v2");
+const getUsersRouters=require("./routes/getUsers");
 
 app.use(express.json());
 app.use(signinRouters);
 app.use(signupRouters);
 app.use(secretStuffRouters);
-app.use(getUsersRouters);
 
 app.use(v2Router);
 app.use(v1Router);
+app.use(getUsersRouters);
+
 
 app.use("*", notFoundHandler);
 app.use(errorHandler); 
