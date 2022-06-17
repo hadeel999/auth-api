@@ -17,7 +17,7 @@ class Collection {
     } catch (e) {
         console.error("Error in creating a new record in model ", this.model)
     }
-}
+} 
 
 async readRecord(dataID) {
     try {
