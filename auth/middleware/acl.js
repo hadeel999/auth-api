@@ -4,9 +4,7 @@ module.exports = (capability) => {
 
   return (req, res, next) => {
 
-    try {
-      console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>",req.user.actions,">>>>>>>>>>>>>>>>>>>>>>>",capability)
-      
+    try {     
       if (req.user.actions.includes(capability)) {
         next();
       }

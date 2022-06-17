@@ -47,8 +47,8 @@ routers.delete('/:model/:id',async(req,res)=>{
     let id = parseInt(req.params.id);
     let deletedModel = await req.model.removeRecord(id);
     if(deletedModel){
-        res.status(204);
         res.send("Deleted Successfully"); 
+        res.status(204);
     }
     else{
         res.status(403).send(`There is no model with this id: ${id}`);
