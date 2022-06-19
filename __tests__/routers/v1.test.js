@@ -48,7 +48,7 @@ describe('testing food model for v1 route',()=>{
 
 it ('deleting by id',async()=>{
     const response = await request.delete(`/food/${id}`)
-    expect(response.status).not.toEqual(200);
+    expect(response.status).not.toEqual(500);
 })
 
 })
