@@ -28,7 +28,7 @@ Object.keys(Users).forEach(element => {
         it ('post new user', async () => {
             let auth = await request.post('/signup').send(Users[element]);
             let userToken = auth.body.token;
-            const response = await request.post('/users').send({
+            const response = await request.post('/v2').send({
                 username: "test",
                 password : "test",
                 role:"user"
@@ -44,21 +44,21 @@ Object.keys(Users).forEach(element => {
         it('testing get all users',async()=>{
             let auth = await request.post('/signin').auth(Users[element].username,Users[element].password);
             let  userToken = auth.body.token;
-            const response = await request.get('/users').set('Authorization', `Bearer ${userToken}`)
+            const response = await request.get('/v2').set('Authorization', `Bearer ${userToken}`)
             expect(response.status).not.toBe(500)
         });
 
         it('testing get one user by id',async()=>{
             let Auth = await request.post('/signin').auth(Users[element].username,Users[element].password);
             let  userToken = Auth.body.token;
-            const response = await request.get(`/users/${id}`).set('Authorization', `Bearer ${userToken}`)
+            const response = await request.get(`/v2/${id}`).set('Authorization', `Bearer ${userToken}`)
             expect(response.status).not.toBe(500)
         })
          
        it ('update new user', async () => {
         let Auth = await request.post('/signin').auth(Users[element].username,Users[element].password);
         let  userToken = Auth.body.token;
-        const response = await request.put(`/users/${id}`).send({
+        const response = await request.put(`/v2/${id}`).send({
             username: "test1",
             password : "test1",
             role: "admin"
@@ -73,7 +73,7 @@ Object.keys(Users).forEach(element => {
     it ('deleting user by id',async()=>{
         let Auth = await request.post('/signin').auth(Users[element].username,Users[element].password);
         let  userToken = Auth.body.token;
-        const response = await request.delete(`/users/${id}`).set("Authorization", `Bearer ${userToken}`);
+        const response = await request.delete(`/v2/${id}`).set("Authorization", `Bearer ${userToken}`);
 
           if (Users[element].role === 'admin') {
             expect(response.status).not.toBe(500);
