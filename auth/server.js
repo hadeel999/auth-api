@@ -20,9 +20,9 @@ app.use(signinRouters);
 app.use(signupRouters);
 app.use(secretStuffRouters);
 
+app.use(getUsersRouters);
 app.use(v2Router);
 app.use(v1Router);
-app.use(getUsersRouters);
 
 
 app.use("*", notFoundHandler);
