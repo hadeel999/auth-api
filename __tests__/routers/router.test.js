@@ -25,7 +25,7 @@ describe('Auth Router', () => {
 
     expect(response.status).not.toBe(500);
   });
-
+             
   it('Can signin with basic auth string', async () => {
     let username1=userData.testUser.username;
     let password1=userData.testUser.password;
